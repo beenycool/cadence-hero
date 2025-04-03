@@ -35,16 +35,16 @@ export default function CalendarMockup() {
   ]
 
   return (
-    <div className="p-4 bg-white dark:bg-slate-900 dark:text-slate-200">
+    <div className="p-4 bg-background text-foreground">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-white">Your Schedule</h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400">Week of May 6 - 10, 2024</p>
+          <h3 className="text-lg font-semibold text-foreground">Your Schedule</h3>
+          <p className="text-sm text-muted-foreground">Week of May 6 - 10, 2024</p>
         </div>
         <div className="flex items-center space-x-2">
           <Badge
             variant="outline"
-            className="bg-purple-50 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800 flex items-center"
+            className="bg-primary/10 dark:bg-primary/20 text-primary border-primary/20 dark:border-primary/30 flex items-center"
           >
             <Clock className="mr-1 h-3 w-3" />
             <span>{currentTime}</span>
@@ -52,21 +52,21 @@ export default function CalendarMockup() {
           <Button
             size="sm"
             variant="outline"
-            className="rounded-full h-8 w-8 p-0 border-slate-200 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+            className="rounded-full h-8 w-8 p-0 border-border text-muted-foreground hover:bg-accent"
           >
             <Plus className="h-4 w-4" />
           </Button>
         </div>
       </div>
 
-      <div className="border rounded-lg overflow-hidden border-slate-200 dark:border-slate-700">
+      <div className="border rounded-lg overflow-hidden border-border">
         {/* Calendar Header */}
-        <div className="grid grid-cols-6 border-b border-slate-200 dark:border-slate-700">
-          <div className="p-2 text-center text-xs font-medium text-slate-500 dark:text-slate-400 border-r border-slate-200 dark:border-slate-700"></div>
+        <div className="grid grid-cols-6 border-b border-border">
+          <div className="p-2 text-center text-xs font-medium text-muted-foreground border-r border-border"></div>
           {days.map((day, i) => (
             <div
               key={day}
-              className="p-2 text-center text-xs font-medium text-slate-700 dark:text-slate-300 border-r last:border-r-0 border-slate-200 dark:border-slate-700"
+              className="p-2 text-center text-xs font-medium text-foreground border-r last:border-r-0 border-border"
             >
               {day}
             </div>
@@ -76,11 +76,11 @@ export default function CalendarMockup() {
         {/* Calendar Body */}
         <div className="grid grid-cols-6">
           {/* Time slots */}
-          <div className="border-r border-slate-200 dark:border-slate-700">
+          <div className="border-r border-border">
             {hours.map((hour) => (
               <div
                 key={hour}
-                className="h-16 border-b last:border-b-0 text-xs text-slate-500 dark:text-slate-400 p-1 border-slate-200 dark:border-slate-700"
+                className="h-16 border-b last:border-b-0 text-xs text-muted-foreground p-1 border-border"
               >
                 {hour}:00
               </div>
@@ -89,9 +89,9 @@ export default function CalendarMockup() {
 
           {/* Days */}
           {Array.from({ length: 5 }, (_, dayIndex) => (
-            <div key={dayIndex} className="relative border-r last:border-r-0 border-slate-200 dark:border-slate-700">
+            <div key={dayIndex} className="relative border-r last:border-r-0 border-border">
               {hours.map((hour) => (
-                <div key={hour} className="h-16 border-b last:border-b-0 border-slate-200 dark:border-slate-700"></div>
+                <div key={hour} className="h-16 border-b last:border-b-0 border-border"></div>
               ))}
 
               {/* Events */}
@@ -101,17 +101,16 @@ export default function CalendarMockup() {
                   const top = (event.start - 9) * 64 // 16px * 4 (4 quarters per hour)
                   const height = event.duration * 64
 
-                  let bgColor =
-                    "bg-slate-100 border-slate-200 text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300"
+                  let bgColor = "bg-muted border-border text-muted-foreground"
                   if (event.type === "meeting")
                     bgColor =
-                      "bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300"
+                      "bg-blue-100/50 border-blue-200 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800/50 dark:text-blue-300"
                   if (event.type === "personal")
                     bgColor =
-                      "bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-900/30 dark:border-amber-800 dark:text-amber-300"
+                      "bg-amber-100/50 border-amber-200 text-amber-700 dark:bg-amber-900/30 dark:border-amber-800/50 dark:text-amber-300"
                   if (event.type === "focus")
                     bgColor =
-                      "bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/30 dark:border-emerald-800 dark:text-emerald-300"
+                      "bg-emerald-100/50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/30 dark:border-emerald-800/50 dark:text-emerald-300"
 
                   return (
                     <div
@@ -122,7 +121,7 @@ export default function CalendarMockup() {
                       <div className="flex justify-between items-start">
                         <span className="text-xs font-medium truncate">{event.title}</span>
                         {event.ai && (
-                          <Badge className="bg-gradient-to-r from-purple-500 to-teal-500 text-white text-[0.65rem] px-1 py-0 h-4">
+                          <Badge className="bg-gradient-to-r from-primary to-teal-500 text-primary-foreground text-[0.65rem] px-1 py-0 h-4">
                             <Sparkles className="h-2 w-2 mr-0.5" />
                             AI
                           </Badge>
@@ -142,21 +141,21 @@ export default function CalendarMockup() {
         </div>
       </div>
 
-      <div className="mt-4 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-100 dark:border-purple-800">
+      <div className="mt-4 p-3 bg-primary/10 dark:bg-primary/20 rounded-lg border border-primary/20 dark:border-primary/30">
         <div className="flex items-start">
-          <div className="flex-shrink-0 bg-gradient-to-r from-purple-600 to-teal-500 rounded-full p-1 mt-0.5">
-            <Sparkles className="h-3 w-3 text-white" />
+          <div className="flex-shrink-0 bg-gradient-to-r from-primary to-teal-500 rounded-full p-1 mt-0.5">
+            <Sparkles className="h-3 w-3 text-primary-foreground" />
           </div>
           <div className="ml-2">
-            <p className="text-xs font-medium text-purple-800 dark:text-purple-300">AI Suggestion</p>
-            <p className="text-xs text-purple-700 dark:text-purple-400">
+            <p className="text-xs font-medium text-primary">AI Suggestion</p>
+            <p className="text-xs text-primary/90 dark:text-primary/80">
               I've scheduled 2 focus blocks for your project work based on your productivity patterns.
             </p>
           </div>
           <Button
             size="sm"
             variant="ghost"
-            className="ml-auto h-6 text-xs text-purple-700 dark:text-purple-300 hover:text-purple-800 hover:bg-purple-100 dark:hover:bg-purple-800/50"
+            className="ml-auto h-6 text-xs text-primary hover:text-primary hover:bg-primary/10 dark:hover:bg-primary/20"
           >
             <Check className="h-3 w-3 mr-1" />
             Apply
@@ -183,4 +182,3 @@ function Sparkles({ className }: { className?: string }) {
     </svg>
   )
 }
-

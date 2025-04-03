@@ -33,7 +33,7 @@ export default function HowItWorksSection() {
       title: "Connect & Customize",
       description:
         "Connect your existing calendars and set your preferences for work hours, focus time, and meeting preferences.",
-      icon: <Calendar className="h-6 w-6 text-white" />,
+      icon: <Calendar className="h-6 w-6 text-primary-foreground" />,
       illustration: <ConnectIllustration active={activeStep === 0} />,
     },
     {
@@ -41,7 +41,7 @@ export default function HowItWorksSection() {
       title: "AI Analysis",
       description:
         "Our AI analyzes your schedule patterns, priorities, and habits to understand your unique productivity rhythm.",
-      icon: <Brain className="h-6 w-6 text-white" />,
+      icon: <Brain className="h-6 w-6 text-primary-foreground" />,
       illustration: <AnalysisIllustration active={activeStep === 1} />,
     },
     {
@@ -49,35 +49,35 @@ export default function HowItWorksSection() {
       title: "Smart Scheduling",
       description:
         "Cadence suggests optimal time blocks for meetings, deep work, and personal time based on your patterns.",
-      icon: <Sparkles className="h-6 w-6 text-white" />,
+      icon: <Sparkles className="h-6 w-6 text-primary-foreground" />,
       illustration: <SchedulingIllustration active={activeStep === 2} />,
     },
     {
       number: 4,
       title: "Perfect Balance",
       description: "Enjoy a perfectly balanced calendar that maximizes productivity while protecting your well-being.",
-      icon: <Clock className="h-6 w-6 text-white" />,
+      icon: <Clock className="h-6 w-6 text-primary-foreground" />,
       illustration: <BalanceIllustration active={activeStep === 3} />,
     },
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-slate-50">
+    <section className="py-20 bg-gradient-to-b from-background to-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-purple-100 text-purple-700 mb-4">
-            <Sparkles className="h-4 w-4 mr-2" />
+          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm bg-primary/10 text-primary mb-4">
+            <Sparkles className="h-4 w-4 mr-2 text-primary" />
             <span>Simple Process</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">How Cadence works for you</h2>
-          <p className="text-lg text-slate-600">
+          <p className="text-lg text-muted-foreground">
             Our intelligent calendar adapts to your unique workflow in just a few simple steps.
           </p>
         </div>
 
         {/* Desktop Timeline (hidden on mobile) */}
         <div className="hidden md:block relative mb-12">
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-purple-200 via-teal-200 to-purple-200 transform -translate-y-1/2 rounded-full"></div>
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-teal-200 to-primary/20 transform -translate-y-1/2 rounded-full"></div>
 
           <div className="grid grid-cols-4 gap-6 relative">
             {steps.map((step, index) => (
@@ -93,23 +93,23 @@ export default function HowItWorksSection() {
                   className={cn(
                     "w-12 h-12 rounded-full flex items-center justify-center z-10 transition-all duration-500 mb-4",
                     activeStep === index
-                      ? "bg-gradient-to-r from-purple-600 to-teal-500 shadow-lg shadow-purple-200"
-                      : "bg-slate-200",
+                      ? "bg-gradient-to-r from-primary to-teal-500 shadow-lg shadow-primary/20"
+                      : "bg-muted",
                   )}
                 >
-                  <span className="text-white font-bold">{step.number}</span>
+                  <span className="text-primary-foreground font-bold">{step.number}</span>
                 </div>
 
                 <h3
                   className={cn(
                     "text-xl font-semibold mb-2 text-center transition-colors duration-500",
-                    activeStep === index ? "text-purple-700" : "text-slate-700",
+                    activeStep === index ? "text-primary" : "text-foreground",
                   )}
                 >
                   {step.title}
                 </h3>
 
-                <p className="text-slate-600 text-center text-sm">{step.description}</p>
+                <p className="text-muted-foreground text-center text-sm">{step.description}</p>
               </div>
             ))}
           </div>
@@ -122,37 +122,37 @@ export default function HowItWorksSection() {
               key={index}
               className={cn(
                 "flex items-start transition-all duration-500 p-4 rounded-lg",
-                activeStep === index ? "bg-white shadow-md" : "opacity-70",
+                activeStep === index ? "bg-background shadow-md" : "opacity-70",
               )}
               onClick={() => setActiveStep(index)}
             >
               <div
                 className={cn(
                   "w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 mr-4",
-                  activeStep === index ? "bg-gradient-to-r from-purple-600 to-teal-500" : "bg-slate-200",
+                  activeStep === index ? "bg-gradient-to-r from-primary to-teal-500" : "bg-muted",
                 )}
               >
-                <span className="text-white font-bold">{step.number}</span>
+                <span className="text-primary-foreground font-bold">{step.number}</span>
               </div>
 
               <div>
                 <h3
                   className={cn(
                     "text-lg font-semibold mb-1 transition-colors duration-500",
-                    activeStep === index ? "text-purple-700" : "text-slate-700",
+                    activeStep === index ? "text-primary" : "text-foreground",
                   )}
                 >
                   {step.title}
                 </h3>
 
-                <p className="text-slate-600 text-sm">{step.description}</p>
+                <p className="text-muted-foreground text-sm">{step.description}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Illustrations */}
-        <div className="mt-12 bg-white rounded-xl border border-slate-200 shadow-lg overflow-hidden">
+        <div className="mt-12 bg-background rounded-xl border border-border shadow-lg overflow-hidden">
           <div className="p-6 md:p-8 h-[300px] md:h-[400px] relative">
             {steps.map((step, index) => (
               <div
@@ -173,7 +173,7 @@ export default function HowItWorksSection() {
         </div>
 
         <div className="mt-12 text-center">
-          <Button className="bg-gradient-to-r from-purple-600 to-teal-500 hover:from-purple-700 hover:to-teal-600 text-white">
+          <Button className="bg-gradient-to-r from-primary to-teal-500 hover:from-primary/80 hover:to-teal-600/80 text-primary-foreground">
             Get started with Cadence
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -190,23 +190,23 @@ function ConnectIllustration({ active }: { active: boolean }) {
       <div className="grid grid-cols-2 gap-6">
         <div
           className={cn(
-            "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform",
+            "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
-              <Calendar className="h-4 w-4 text-blue-600" />
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-2">
+              <Calendar className="h-4 w-4 text-primary/90" />
             </div>
-            <span className="text-sm font-medium text-slate-700">Google Calendar</span>
+            <span className="text-sm font-medium text-foreground">Google Calendar</span>
           </div>
           <div className="space-y-2">
-            <div className="h-2 bg-blue-100 rounded-full w-full"></div>
-            <div className="h-2 bg-blue-100 rounded-full w-3/4"></div>
+            <div className="h-2 bg-primary/20 rounded-full w-full"></div>
+            <div className="h-2 bg-primary/20 rounded-full w-3/4"></div>
           </div>
           <div
             className={cn(
-              "mt-3 flex items-center text-xs text-green-600 transition-all duration-1000 delay-300",
+              "mt-3 flex items-center text-xs text-green-500 transition-all duration-1000 delay-300",
               active ? "opacity-100" : "opacity-0",
             )}
           >
@@ -217,23 +217,23 @@ function ConnectIllustration({ active }: { active: boolean }) {
 
         <div
           className={cn(
-            "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform delay-150",
+            "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform delay-150",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">
-              <Calendar className="h-4 w-4 text-blue-600" />
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mr-2">
+              <Calendar className="h-4 w-4 text-primary/90" />
             </div>
-            <span className="text-sm font-medium text-slate-700">Outlook</span>
+            <span className="text-sm font-medium text-foreground">Outlook</span>
           </div>
           <div className="space-y-2">
-            <div className="h-2 bg-blue-100 rounded-full w-full"></div>
-            <div className="h-2 bg-blue-100 rounded-full w-2/3"></div>
+            <div className="h-2 bg-primary/20 rounded-full w-full"></div>
+            <div className="h-2 bg-primary/20 rounded-full w-2/3"></div>
           </div>
           <div
             className={cn(
-              "mt-3 flex items-center text-xs text-green-600 transition-all duration-1000 delay-500",
+              "mt-3 flex items-center text-xs text-green-500 transition-all duration-1000 delay-500",
               active ? "opacity-100" : "opacity-0",
             )}
           >
@@ -244,32 +244,32 @@ function ConnectIllustration({ active }: { active: boolean }) {
 
         <div
           className={cn(
-            "col-span-2 bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform delay-300",
+            "col-span-2 bg-background rounded-lg border border-border p-4 transition-all duration-700 transform delay-300",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-2">
-              <UserIcon className="h-4 w-4 text-purple-600" />
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-2">
+              <UserIcon className="h-4 w-4 text-primary" />
             </div>
-            <span className="text-sm font-medium text-slate-700">Your Preferences</span>
+            <span className="text-sm font-medium text-foreground">Your Preferences</span>
           </div>
           <div className="grid grid-cols-2 gap-3 text-xs">
             <div>
-              <div className="text-slate-500 mb-1">Work Hours</div>
-              <div className="font-medium text-slate-700">9:00 AM - 5:00 PM</div>
+              <div className="text-muted-foreground mb-1">Work Hours</div>
+              <div className="font-medium text-foreground">9:00 AM - 5:00 PM</div>
             </div>
             <div>
-              <div className="text-slate-500 mb-1">Focus Time</div>
-              <div className="font-medium text-slate-700">2 hours daily</div>
+              <div className="text-muted-foreground mb-1">Focus Time</div>
+              <div className="font-medium text-foreground">2 hours daily</div>
             </div>
             <div>
-              <div className="text-slate-500 mb-1">Meeting Buffer</div>
-              <div className="font-medium text-slate-700">15 minutes</div>
+              <div className="text-muted-foreground mb-1">Meeting Buffer</div>
+              <div className="font-medium text-foreground">15 minutes</div>
             </div>
             <div>
-              <div className="text-slate-500 mb-1">Lunch Break</div>
-              <div className="font-medium text-slate-700">12:00 - 1:00 PM</div>
+              <div className="text-muted-foreground mb-1">Lunch Break</div>
+              <div className="font-medium text-foreground">12:00 - 1:00 PM</div>
             </div>
           </div>
         </div>
@@ -284,59 +284,59 @@ function AnalysisIllustration({ active }: { active: boolean }) {
     <div className="w-full max-w-md">
       <div
         className={cn(
-          "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform",
+          "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform",
           active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
         )}
       >
         <div className="flex items-center mb-4">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-teal-500 flex items-center justify-center mr-2">
-            <Brain className="h-4 w-4 text-white" />
+          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-teal-500 flex items-center justify-center mr-2">
+            <Brain className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="text-sm font-medium text-slate-700">AI Pattern Analysis</span>
+          <span className="text-sm font-medium text-foreground">AI Pattern Analysis</span>
         </div>
 
         <div className="space-y-4">
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-500">Productivity by Time of Day</span>
-              <span className="text-purple-600 font-medium">High confidence</span>
+              <span className="text-muted-foreground">Productivity by Time of Day</span>
+              <span className="text-primary font-medium">High confidence</span>
             </div>
-            <div className="h-8 bg-slate-100 rounded-md overflow-hidden flex">
+              <div className="h-8 bg-muted rounded-md overflow-hidden flex">
               <div
-                className={cn("bg-purple-200 h-full transition-all duration-1000 ease-out", active ? "w-[10%]" : "w-0")}
+                className={cn("bg-primary/20 h-full transition-all duration-1000 ease-out", active ? "w-[10%]" : "w-0")}
               ></div>
               <div
                 className={cn(
-                  "bg-purple-300 h-full transition-all duration-1000 ease-out delay-100",
+                  "bg-primary/30 h-full transition-all duration-1000 ease-out delay-100",
                   active ? "w-[15%]" : "w-0",
                 )}
               ></div>
               <div
                 className={cn(
-                  "bg-purple-400 h-full transition-all duration-1000 ease-out delay-200",
+                  "bg-primary/40 h-full transition-all duration-1000 ease-out delay-200",
                   active ? "w-[25%]" : "w-0",
                 )}
               ></div>
               <div
                 className={cn(
-                  "bg-purple-500 h-full transition-all duration-1000 ease-out delay-300",
+                  "bg-primary/50 h-full transition-all duration-1000 ease-out delay-300",
                   active ? "w-[30%]" : "w-0",
                 )}
               ></div>
               <div
                 className={cn(
-                  "bg-purple-400 h-full transition-all duration-1000 ease-out delay-400",
+                  "bg-primary/40 h-full transition-all duration-1000 ease-out delay-400",
                   active ? "w-[15%]" : "w-0",
                 )}
               ></div>
               <div
                 className={cn(
-                  "bg-purple-300 h-full transition-all duration-1000 ease-out delay-500",
+                  "bg-primary/30 h-full transition-all duration-1000 ease-out delay-500",
                   active ? "w-[5%]" : "w-0",
                 )}
               ></div>
             </div>
-            <div className="flex justify-between text-[10px] text-slate-400 mt-1">
+            <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
               <span>6AM</span>
               <span>9AM</span>
               <span>12PM</span>
@@ -347,14 +347,14 @@ function AnalysisIllustration({ active }: { active: boolean }) {
 
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-500">Meeting Preferences</span>
-              <span className="text-teal-600 font-medium">Medium confidence</span>
+              <span className="text-muted-foreground">Meeting Preferences</span>
+              <span className="text-teal-500 font-medium">Medium confidence</span>
             </div>
             <div className="grid grid-cols-3 gap-2">
               <div
                 className={cn(
                   "h-6 rounded-md flex items-center justify-center text-[10px] font-medium text-white transition-all duration-700",
-                  active ? "bg-teal-500 opacity-100" : "bg-slate-200 opacity-50",
+                  active ? "bg-teal-500 opacity-100" : "bg-muted opacity-50",
                 )}
               >
                 Mornings
@@ -362,7 +362,7 @@ function AnalysisIllustration({ active }: { active: boolean }) {
               <div
                 className={cn(
                   "h-6 rounded-md flex items-center justify-center text-[10px] font-medium transition-all duration-700 delay-100",
-                  active ? "bg-slate-200 text-slate-500 opacity-100" : "bg-slate-200 text-slate-400 opacity-50",
+                  active ? "bg-muted text-muted-foreground opacity-100" : "bg-muted text-muted-foreground/70 opacity-50",
                 )}
               >
                 Afternoons
@@ -370,7 +370,7 @@ function AnalysisIllustration({ active }: { active: boolean }) {
               <div
                 className={cn(
                   "h-6 rounded-md flex items-center justify-center text-[10px] font-medium transition-all duration-700 delay-200",
-                  active ? "bg-slate-200 text-slate-500 opacity-100" : "bg-slate-200 text-slate-400 opacity-50",
+                  active ? "bg-muted text-muted-foreground opacity-100" : "bg-muted text-muted-foreground/70 opacity-50",
                 )}
               >
                 Evenings
@@ -380,25 +380,25 @@ function AnalysisIllustration({ active }: { active: boolean }) {
 
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-slate-500">Focus Time Analysis</span>
+              <span className="text-muted-foreground">Focus Time Analysis</span>
             </div>
             <div className="flex items-center">
               <div
                 className={cn(
                   "h-3 transition-all duration-1000 ease-out rounded-l-full",
-                  active ? "bg-gradient-to-r from-purple-600 to-teal-500 w-[75%]" : "bg-slate-200 w-[10%]",
+                  active ? "bg-gradient-to-r from-primary to-teal-500 w-[75%]" : "bg-muted w-[10%]",
                 )}
               ></div>
               <div
                 className={cn(
-                  "h-3 bg-slate-200 transition-all duration-1000 ease-out rounded-r-full",
+                  "h-3 bg-muted transition-all duration-1000 ease-out rounded-r-full",
                   active ? "w-[25%]" : "w-[90%]",
                 )}
               ></div>
             </div>
             <div
               className={cn(
-                "text-xs text-purple-600 font-medium mt-1 transition-opacity duration-700 delay-500",
+                "text-xs text-primary font-medium mt-1 transition-opacity duration-700 delay-500",
                 active ? "opacity-100" : "opacity-0",
               )}
             >
@@ -417,35 +417,35 @@ function SchedulingIllustration({ active }: { active: boolean }) {
     <div className="w-full max-w-md">
       <div
         className={cn(
-          "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform",
+          "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform",
           active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
         )}
       >
         <div className="flex items-center mb-4">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-teal-500 flex items-center justify-center mr-2">
-            <Calendar className="h-4 w-4 text-white" />
+          <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-teal-500 flex items-center justify-center mr-2">
+            <Calendar className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="text-sm font-medium text-slate-700">Smart Calendar Suggestions</span>
+          <span className="text-sm font-medium text-foreground">Smart Calendar Suggestions</span>
         </div>
 
         <div className="space-y-3">
           {["Monday", "Tuesday", "Wednesday"].map((day, i) => (
-            <div key={day} className="flex items-stretch h-16 border border-slate-200 rounded-md overflow-hidden">
-              <div className="w-16 bg-slate-50 flex-shrink-0 flex flex-col items-center justify-center border-r border-slate-200">
-                <div className="text-xs font-medium text-slate-700">{day}</div>
-                <div className="text-[10px] text-slate-500">May {i + 6}</div>
+            <div key={day} className="flex items-stretch h-16 border border-border rounded-md overflow-hidden">
+              <div className="w-16 bg-muted flex-shrink-0 flex flex-col items-center justify-center border-r border-border">
+                <div className="text-xs font-medium text-foreground">{day}</div>
+                <div className="text-[10px] text-muted-foreground">May {i + 6}</div>
               </div>
 
               <div className="flex-1 flex relative">
                 <div
                   className={cn(
-                    "absolute top-0 bottom-0 left-0 bg-blue-100 border-r border-blue-200 transition-all duration-1000 ease-out flex items-center justify-center",
+                    "absolute top-0 bottom-0 left-0 bg-primary/20 border-r border-primary/30 transition-all duration-1000 ease-out flex items-center justify-center",
                     active ? `w-[${25 + i * 5}%]` : "w-0",
                   )}
                 >
                   <div
                     className={cn(
-                      "text-[10px] text-blue-700 font-medium whitespace-nowrap transition-opacity duration-500",
+                      "text-[10px] text-primary/90 font-medium whitespace-nowrap transition-opacity duration-500",
                       active ? "opacity-100 delay-300" : "opacity-0",
                     )}
                   >
@@ -455,13 +455,13 @@ function SchedulingIllustration({ active }: { active: boolean }) {
 
                 <div
                   className={cn(
-                    "absolute top-0 bottom-0 bg-purple-100 border-r border-purple-200 transition-all duration-1000 ease-out delay-200 flex items-center justify-center",
+                    "absolute top-0 bottom-0 bg-primary/30 border-r border-primary/40 transition-all duration-1000 ease-out delay-200 flex items-center justify-center",
                     active ? `left-[${25 + i * 5}%] w-[${30 - i * 5}%]` : "left-0 w-0",
                   )}
                 >
                   <div
                     className={cn(
-                      "text-[10px] text-purple-700 font-medium whitespace-nowrap transition-opacity duration-500",
+                      "text-[10px] text-primary font-medium whitespace-nowrap transition-opacity duration-500",
                       active ? "opacity-100 delay-500" : "opacity-0",
                     )}
                   >
@@ -472,13 +472,13 @@ function SchedulingIllustration({ active }: { active: boolean }) {
 
                 <div
                   className={cn(
-                    "absolute top-0 bottom-0 bg-amber-100 border-r border-amber-200 transition-all duration-1000 ease-out delay-400 flex items-center justify-center",
+                    "absolute top-0 bottom-0 bg-amber-100/50 border-r border-amber-200/50 transition-all duration-1000 ease-out delay-400 flex items-center justify-center",
                     active ? `left-[${55}%] w-[15%]` : "left-0 w-0",
                   )}
                 >
                   <div
                     className={cn(
-                      "text-[10px] text-amber-700 font-medium whitespace-nowrap transition-opacity duration-500",
+                      "text-[10px] text-amber-700/90 font-medium whitespace-nowrap transition-opacity duration-500",
                       active ? "opacity-100 delay-700" : "opacity-0",
                     )}
                   >
@@ -488,13 +488,13 @@ function SchedulingIllustration({ active }: { active: boolean }) {
 
                 <div
                   className={cn(
-                    "absolute top-0 bottom-0 right-0 bg-emerald-100 transition-all duration-1000 ease-out delay-600 flex items-center justify-center",
+                    "absolute top-0 bottom-0 right-0 bg-primary/40 transition-all duration-1000 ease-out delay-600 flex items-center justify-center",
                     active ? `w-[${30 - i * 5}%]` : "w-0",
                   )}
                 >
                   <div
                     className={cn(
-                      "text-[10px] text-emerald-700 font-medium whitespace-nowrap transition-opacity duration-500",
+                      "text-[10px] text-primary/90 font-medium whitespace-nowrap transition-opacity duration-500",
                       active ? "opacity-100 delay-900" : "opacity-0",
                     )}
                   >
@@ -508,17 +508,17 @@ function SchedulingIllustration({ active }: { active: boolean }) {
 
           <div
             className={cn(
-              "bg-purple-50 rounded-md p-3 border border-purple-100 transition-all duration-700 delay-1000",
+              "bg-primary/10 rounded-md p-3 border border-primary/20 transition-all duration-700 delay-1000",
               active ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-4",
             )}
           >
             <div className="flex items-start">
-              <div className="flex-shrink-0 bg-gradient-to-r from-purple-600 to-teal-500 rounded-full p-1 mt-0.5">
-                <Sparkles className="h-3 w-3 text-white" />
+              <div className="flex-shrink-0 bg-gradient-to-r from-primary to-teal-500 rounded-full p-1 mt-0.5">
+                <Sparkles className="h-3 w-3 text-primary-foreground" />
               </div>
               <div className="ml-2">
-                <p className="text-xs font-medium text-purple-800">AI Insight</p>
-                <p className="text-xs text-purple-700">
+                <p className="text-xs font-medium text-primary">AI Insight</p>
+                <p className="text-xs text-primary/90">
                   Your optimal focus time is between 9-11 AM. I've scheduled deep work blocks during this time.
                 </p>
               </div>
@@ -537,23 +537,23 @@ function BalanceIllustration({ active }: { active: boolean }) {
       <div className="grid grid-cols-2 gap-6">
         <div
           className={cn(
-            "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform",
+            "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-teal-500 flex items-center justify-center mr-2">
-              <TrendingUpIcon className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-teal-500 flex items-center justify-center mr-2">
+              <TrendingUpIcon className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-sm font-medium text-slate-700">Productivity</span>
+            <span className="text-sm font-medium text-foreground">Productivity</span>
           </div>
 
           <div className="mt-2 space-y-2">
             <div className="flex items-center">
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-muted h-2 rounded-full overflow-hidden">
                 <div
                   className={cn(
-                    "bg-gradient-to-r from-purple-500 to-teal-500 h-full rounded-full transition-all duration-1000 ease-out",
+                    "bg-gradient-to-r from-primary to-teal-500 h-full rounded-full transition-all duration-1000 ease-out",
                     active ? "w-[85%]" : "w-0",
                   )}
                 ></div>
@@ -570,34 +570,34 @@ function BalanceIllustration({ active }: { active: boolean }) {
 
             <div
               className={cn(
-                "text-xs text-slate-600 transition-all duration-700 delay-300",
+                "text-xs text-muted-foreground transition-all duration-700 delay-300",
                 active ? "opacity-100" : "opacity-0",
               )}
             >
-              <span className="text-green-600 font-medium">↑ 32%</span> increase since using Cadence
+              <span className="text-green-500 font-medium">↑ 32%</span> increase since using Cadence
             </div>
           </div>
         </div>
 
         <div
           className={cn(
-            "bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform delay-150",
+            "bg-background rounded-lg border border-border p-4 transition-all duration-700 transform delay-150",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-teal-500 flex items-center justify-center mr-2">
-              <HeartIcon className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-teal-500 flex items-center justify-center mr-2">
+              <HeartIcon className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-sm font-medium text-slate-700">Work-Life Balance</span>
+            <span className="text-sm font-medium text-foreground">Work-Life Balance</span>
           </div>
 
           <div className="mt-2 space-y-2">
             <div className="flex items-center">
-              <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+              <div className="w-full bg-muted h-2 rounded-full overflow-hidden">
                 <div
                   className={cn(
-                    "bg-gradient-to-r from-purple-500 to-teal-500 h-full rounded-full transition-all duration-1000 ease-out",
+                    "bg-gradient-to-r from-primary to-teal-500 h-full rounded-full transition-all duration-1000 ease-out",
                     active ? "w-[90%]" : "w-0",
                   )}
                 ></div>
@@ -614,31 +614,31 @@ function BalanceIllustration({ active }: { active: boolean }) {
 
             <div
               className={cn(
-                "text-xs text-slate-600 transition-all duration-700 delay-300",
+                "text-xs text-muted-foreground transition-all duration-700 delay-300",
                 active ? "opacity-100" : "opacity-0",
               )}
             >
-              <span className="text-green-600 font-medium">↑ 45%</span> improvement in satisfaction
+              <span className="text-green-500 font-medium">↑ 45%</span> improvement in satisfaction
             </div>
           </div>
         </div>
 
         <div
           className={cn(
-            "col-span-2 bg-white rounded-lg border border-slate-200 p-4 transition-all duration-700 transform delay-300",
+            "col-span-2 bg-background rounded-lg border border-border p-4 transition-all duration-700 transform delay-300",
             active ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
           )}
         >
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-teal-500 flex items-center justify-center mr-2">
-              <MessageCircleIcon className="h-4 w-4 text-white" />
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-teal-500 flex items-center justify-center mr-2">
+              <MessageCircleIcon className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-sm font-medium text-slate-700">User Testimonial</span>
+            <span className="text-sm font-medium text-foreground">User Testimonial</span>
           </div>
 
           <div
             className={cn(
-              "italic text-sm text-slate-600 transition-all duration-1000 delay-500",
+              "italic text-sm text-muted-foreground transition-all duration-1000 delay-500",
               active ? "opacity-100" : "opacity-0",
             )}
           >
@@ -652,12 +652,12 @@ function BalanceIllustration({ active }: { active: boolean }) {
               active ? "opacity-100" : "opacity-0",
             )}
           >
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-200 to-teal-200 flex items-center justify-center mr-2">
-              <span className="text-xs font-medium text-purple-700">SJ</span>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary/20 to-teal-200 flex items-center justify-center mr-2">
+              <span className="text-xs font-medium text-primary">SJ</span>
             </div>
             <div>
-              <div className="text-xs font-medium text-slate-700">Sarah Johnson</div>
-              <div className="text-xs text-slate-500">Product Manager</div>
+              <div className="text-xs font-medium text-foreground">Sarah Johnson</div>
+              <div className="text-xs text-muted-foreground">Product Manager</div>
             </div>
           </div>
         </div>
@@ -752,4 +752,3 @@ function Sparkles({ className }: { className?: string }) {
     </svg>
   )
 }
-
